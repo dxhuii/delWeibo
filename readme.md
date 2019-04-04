@@ -1,5 +1,5 @@
 ## 安装地址
-> [批量删除新浪微博博文安装地地址](https://greasyfork.org/zh-CN/scripts/376618-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%8D%9A%E6%96%87)
+> [批量删除新浪微博博文 greasyfork(油猴脚本) 安装地址](https://greasyfork.org/zh-CN/scripts/376618-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E5%8D%9A%E6%96%87)
 
 ## 说明
 > 一个可以批量删除新浪微博的小工具，搜索了好多，找不到合适的，刚好找到一段脚本

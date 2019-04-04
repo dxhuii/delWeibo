@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         批量删除新浪微博博文
 // @namespace    https://www.5ddm.com/
-// @version      0.2
+// @version      0.3
 // @description  批量删除新浪微博
 // @author       plain
 // @match        https://weibo.com/*/profile?*

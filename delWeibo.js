@@ -14,39 +14,45 @@
 (function() {
     'use strict';
     window.onload = () => {
+        function $(elem) {
+            return document.querySelector(elem);
+        }
+        function $All(elem) {
+            return document.querySelectorAll(elem);
+        }
         function del() {
             for (var i = 0; i < 100; i++) {
                 setTimeout(function() {
                     if(window.location.href.indexOf('//weibo.com/u/page/fav/') !== -1) { // 新
-                        if(document.querySelector('i[title="更多"]')) {
-                            document.querySelector('i[title="更多"]').click();
-                            document.querySelectorAll('.woo-pop-item-main')[0].click();
-                            if(document.querySelector('.woo-dialog-ctrl')) {
-                                document.querySelector('.woo-dialog-ctrl').querySelectorAll('.woo-button-main')[1].click();
+                        if($('i[title="更多"]')) {
+                            $('i[title="更多"]').click();
+                            $All('.woo-pop-item-main')[0].click();
+                            if($('.woo-dialog-ctrl')) {
+                                $('.woo-dialog-ctrl').querySelectorAll('.woo-button-main')[1].click();
                             }
                             window.location.reload();
                         }
                     }
                     
                     if(window.location.href.indexOf('/profile') !== -1) { // 旧
-                        if(document.querySelector('a[action-type="fl_menu"]')) {
-                            document.querySelector('a[action-type="fl_menu"]').click();
-                            document.querySelector('a[title="删除此条微博"]').click();
-                            document.querySelector('a[action-type="ok"]').click();
+                        if($('a[action-type="fl_menu"]')) {
+                            $('a[action-type="fl_menu"]').click();
+                            $('a[title="删除此条微博"]').click();
+                            $('a[action-type="ok"]').click();
                         }
                     }
                     if(window.location.href.indexOf('//weibo.com/fav') !== -1) { // 旧，github网友提供 https://github.com/Syukkic
-                        if(document.querySelector('a[action-type="fl_favorite"]')) {
-                            document.querySelector('a[action-type="fl_favorite"]').click();
-                            document.querySelector('a[action-type="ok"]').click();   
+                        if($('a[action-type="fl_favorite"]')) {
+                            $('a[action-type="fl_favorite"]').click();
+                            $('a[action-type="ok"]').click();   
                         }
                     }
                     
                     if(window.location.href.indexOf('//weibo.com/u/') !== -1) { // 新
-                        if(document.querySelector('i[title="更多"]')) {
-                            document.querySelector('i[title="更多"]').click();
-                            document.querySelectorAll('.woo-pop-item-main')[6].click();
-                            document.querySelector('.woo-dialog-ctrl').querySelectorAll('.woo-button-main')[1].click();
+                        if($('i[title="更多"]')) {
+                            $('i[title="更多"]').click();
+                            $All('.woo-pop-item-main')[6].click();
+                            $('.woo-dialog-ctrl').querySelectorAll('.woo-button-main')[1].click();
                             window.location.reload();
                         }
                     }

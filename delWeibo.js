@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         批量删除新浪微博博文
 // @namespace    https://github.com/dxhuii/delWeibo
-// @version      1.0.4
+// @version      1.0.7
 // @description  批量删除新浪微博
 // @author       plain
 // @match        *://weibo.com/*/profile?*
 // @match        *://weibo.com/u/*
+// @match        *://weibo.com/fav*
+// @match        *://weibo.com/u/page/fav/*
 // @grant        none
 // ==/UserScript==
 
@@ -15,17 +17,38 @@
         function del() {
             for (var i = 0; i < 100; i++) {
                 setTimeout(function() {
-                    if(window.location.href.indexOf('//weibo.com/u/')) { // 新
-                        document.querySelector('i[title="更多"]').click();
-                        document.querySelectorAll('.woo-pop-item-main')[6].click();
-                        document.querySelector('.woo-dialog-ctrl').querySelectorAll('.woo-button-main')[1].click();
-                        window.location.reload();
+                    if(window.location.href.indexOf('//weibo.com/u/page/fav/') !== -1) { // 新
+                        if(document.querySelector('i[title="更多"]')) {
+                            document.querySelector('i[title="更多"]').click();
+                            document.querySelectorAll('.woo-pop-item-main')[0].click();
+                            if(document.querySelector('.woo-dialog-ctrl')) {
+                                document.querySelector('.woo-dialog-ctrl').querySelectorAll('.woo-button-main')[1].click();
+                            }
+                            window.location.reload();
+                        }
                     }
-
-                    if(window.location.href.indexOf('/profile')) { // 旧
-                        document.querySelector('a[action-type="fl_menu"]').click();
-                        document.querySelector('a[title="删除此条微博"]').click();
-                        document.querySelector('a[action-type="ok"]').click();
+                    
+                    if(window.location.href.indexOf('/profile') !== -1) { // 旧
+                        if(document.querySelector('a[action-type="fl_menu"]')) {
+                            document.querySelector('a[action-type="fl_menu"]').click();
+                            document.querySelector('a[title="删除此条微博"]').click();
+                            document.querySelector('a[action-type="ok"]').click();
+                        }
+                    }
+                    if(window.location.href.indexOf('//weibo.com/fav') !== -1) { // 旧，github网友提供 https://github.com/Syukkic
+                        if(document.querySelector('a[action-type="fl_favorite"]')) {
+                            document.querySelector('a[action-type="fl_favorite"]').click();
+                            document.querySelector('a[action-type="ok"]').click();   
+                        }
+                    }
+                    
+                    if(window.location.href.indexOf('//weibo.com/u/') !== -1) { // 新
+                        if(document.querySelector('i[title="更多"]')) {
+                            document.querySelector('i[title="更多"]').click();
+                            document.querySelectorAll('.woo-pop-item-main')[6].click();
+                            document.querySelector('.woo-dialog-ctrl').querySelectorAll('.woo-button-main')[1].click();
+                            window.location.reload();
+                        }
                     }
                 }, 1000 * i);
             }

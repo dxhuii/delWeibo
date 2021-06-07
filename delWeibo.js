@@ -51,7 +51,7 @@
                     if(window.location.href.indexOf('//weibo.com/u/') !== -1) { // 新
                         if($('i[title="更多"]')) {
                             $('i[title="更多"]').click();
-                            $All('.woo-pop-item-main')[6].click();
+                            $All('.woo-pop-item-main')[$All('.woo-pop-item-main').length-2].click();
                             $('.woo-dialog-ctrl').querySelectorAll('.woo-button-main')[1].click();
                             window.location.reload();
                         }

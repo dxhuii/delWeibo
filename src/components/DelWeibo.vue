@@ -2,6 +2,7 @@
 import { ref, watchEffect } from 'vue'
 
 const start = ref(0)
+const count = ref(0)
 
 function $(elem: string) {
   return document.querySelector(elem) as HTMLDivElement
@@ -55,19 +56,27 @@ function del() {
             $('i[title="负反馈"]').click()
           }
           const item = $All('.woo-pop-item-main')
-          if (item.length > 3) {
-            item[item.length - 3].click()
-          } else {
-            if (item.length > 1) {
-              item[1].click()
+          if (item.length) {
+            if (item.length > 3) {
+              item.forEach(item => item.innerText === '删除' && item.click())
+              count.value = 0
             } else {
-              $('.woo-pop-item-main') && $('.woo-pop-item-main').click()
+              item.forEach(item => item.innerText === '取消快转' && item.click())
+              setTimeout(() => {
+                count.value = 1
+              }, 1000)
             }
           }
 
           $('.woo-dialog-ctrl') && $$('.woo-dialog-ctrl', '.woo-button-main').click()
           if ($('.deletedToolbar_toolbarFull_1dOfW')) {
             $('.deletedToolbar_toolbarFull_1dOfW').click()
+          }
+          if (count.value) {
+            count.value = 0
+            setTimeout(() => {
+              window.location.reload()
+            }, 1000)
           }
           i > 160 && window.location.reload()
         }

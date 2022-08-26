@@ -17,6 +17,7 @@
 ## 感谢
 
 - `https://github.com/Einsamleser` 提供的批量取消微博收藏
+- `https://github.com/lisonge/vite-plugin-monkey` 
 - 由于我操作失误没能合并 pull，现在手动添加一下。
 
 ## 切记

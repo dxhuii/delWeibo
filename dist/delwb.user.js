@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         批量删除新浪微博博文
 // @namespace    https://github.com/dxhuii/delWeibo
-// @version      1.1.2
+// @version      1.1.3
 // @author       plain
 // @description  批量删除新浪微博
 // @license      MIT
@@ -10,19 +10,12 @@
 // @match        *://weibo.com/u/*
 // @match        *://weibo.com/fav*
 // @match        *://weibo.com/u/page/fav/*
-// @require      https://cdn.jsdelivr.net/npm/vue@3.2.37/dist/vue.global.prod.js
+// @require      https://cdn.jsdelivr.net/npm/vue@3.2.39/dist/vue.global.prod.js
 // ==/UserScript==
 
-// use vite-plugin-monkey@2.1.1 at 2022-08-26T02:46:30.109Z
+// use vite-plugin-monkey@2.4.0 at 2022-09-13T12:38:58.947Z
 
-;(({ css = "" }) => {
-  const style = document.createElement("style");
-  style.innerText = css;
-  style.dataset.source = "vite-plugin-monkey";
-  document.head.appendChild(style);
-})({
-  "css": "\n.del-weibo[data-v-00812207] {\n  position: fixed;\n  right: 0;\n  top: 50%;\n  transform: translateY(-50%);\n  z-index: 9999999;\n}\n"
-});
+(({css:t=""})=>{const e=document.createElement("style");e.innerText=t,e.dataset.source="vite-plugin-monkey",document.head.appendChild(e)})({css:".del-weibo[data-v-00812207]{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:9999999}"});
 
 (function(vue) {
   "use strict";
@@ -160,4 +153,3 @@
     })()
   );
 })(Vue);
- 

@@ -27,6 +27,14 @@
 
 ## 更新
 
+### v1.1.3
+
+- 立即删除按钮样式修改
+- 增加快转特殊情况的删除 感谢 [@zhudashi](https://github.com/zhudashi)([#8](https://github.com/dxhuii/delWeibo/issues/8)) 提供的功能
+
+### v1.1.2
+- 日常更新，优化
+
 ### v1.1.1
 
 - 如果遇到快转，删除掉后会主主动刷新页面

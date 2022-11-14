@@ -46,39 +46,44 @@ function del() {
         }
       }
 
-      if (url.indexOf('//weibo.com/u/') !== -1) {
         // 新
-        if ($('i[title="更多"]') || $('i[title="负反馈"]')) {
-          if ($('i[title="更多"]')) {
-            $('i[title="更多"]').click()
-          }
-          if ($('i[title="负反馈"]')) {
-            $('i[title="负反馈"]').click()
-          }
-          const item = $All('.woo-pop-item-main')
-          if (item.length) {
-            if (item.length > 3) {
-              item.forEach(item => item.innerText === '删除' && item.click())
+      if (url.indexOf('//weibo.com/u/') !== -1) {
+        if( $('.vue-recycle-scroller__item-view .deletedToolbar_toolbarFull_1dOfW span')){
+          $('.deletedToolbar_toolbarFull_1dOfW span').click()
+          $('.vue-recycle-scroller__item-view .deletedToolbar_toolbarFull_1dOfW').remove()
+        } else {
+          if ($('i[title="更多"]') || $('i[title="负反馈"]')) {
+            if ($('i[title="更多"]')) {
+              $('i[title="更多"]').click()
+            }
+            if ($('i[title="负反馈"]')) {
+              $('i[title="负反馈"]').click()
+            }
+            const item = $All('.woo-pop-item-main')
+            if (item.length) {
+              if (item.length > 3) {
+                item.forEach(item => item.innerText === '删除' && item.click())
+                count.value = 0
+              } else {
+                item.forEach(item => item.innerText === '取消快转' && item.click())
+                setTimeout(() => {
+                  count.value = 1
+                }, 1000)
+              }
+            }
+
+            $('.woo-dialog-ctrl') && $$('.woo-dialog-ctrl', '.woo-button-main').click()
+            if ($('.deletedToolbar_toolbarFull_1dOfW')) {
+              $('.deletedToolbar_toolbarFull_1dOfW').click()
+            }
+            if (count.value) {
               count.value = 0
-            } else {
-              item.forEach(item => item.innerText === '取消快转' && item.click())
               setTimeout(() => {
-                count.value = 1
+                window.location.reload()
               }, 1000)
             }
+            i > 160 && window.location.reload()
           }
-
-          $('.woo-dialog-ctrl') && $$('.woo-dialog-ctrl', '.woo-button-main').click()
-          if ($('.deletedToolbar_toolbarFull_1dOfW')) {
-            $('.deletedToolbar_toolbarFull_1dOfW').click()
-          }
-          if (count.value) {
-            count.value = 0
-            setTimeout(() => {
-              window.location.reload()
-            }, 1000)
-          }
-          i > 160 && window.location.reload()
         }
       }
     }, 1000 * i)
@@ -108,8 +113,8 @@ watchEffect(() => {
 </script>
 
 <template>
-  <button class="del-weibo" v-if="start" @click="onEnd">结束</button>
-  <button class="del-weibo" v-else @click="onStart">开始</button>
+  <button class="del-weibo" :class="{'del-weibo-end': start}" v-if="start" @click="onEnd">结束</button>
+  <button class="del-weibo" v-else @click="onStart">开始删除</button>
 </template>
 
 <style scoped>
@@ -119,5 +124,14 @@ watchEffect(() => {
   top: 50%;
   transform: translateY(-50%);
   z-index: 9999999;
+  background-color: #ff8200;
+  color: #fff;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 100px 0 0 100px;
+  cursor: pointer;
+}
+.del-weibo-end {
+  background-color: #ff84007a;
 }
 </style>

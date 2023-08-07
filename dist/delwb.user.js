@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         批量删除新浪微博博文
 // @namespace    https://github.com/dxhuii/delWeibo
-// @version      1.1.3
+// @version      1.1.4
 // @author       plain
 // @description  批量删除新浪微博
 // @license      MIT
@@ -10,7 +10,7 @@
 // @match        *://weibo.com/u/*
 // @match        *://weibo.com/fav*
 // @match        *://weibo.com/u/page/fav/*
-// @require      https://cdn.jsdelivr.net/npm/vue@3.3.2/dist/vue.global.prod.js
+// @require      https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.prod.js
 // ==/UserScript==
 
 (o=>{const e=document.createElement("style");e.dataset.source="vite-plugin-monkey",e.textContent=o,document.head.append(e)})(" .del-weibo[data-v-1534c272]{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:9999999;background-color:#ff8200;color:#fff;padding:6px 16px;border:none;border-radius:100px 0 0 100px;cursor:pointer}.del-weibo-end[data-v-1534c272]{background-color:#ff84007a} ");

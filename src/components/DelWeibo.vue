@@ -16,20 +16,20 @@ function $$(elem: string, el: string) {
 function del() {
   const url = window.location.href
   for (let i = 0; i < 1000; i++) {
-    setTimeout(function () {
-      if (url.indexOf('//weibo.com/u/page/fav/') !== -1) {
+    setTimeout(() => {
+      if (url.includes('//weibo.com/u/page/fav/')) {
         // 新
         if ($('i[title="更多"]')) {
           $('i[title="更多"]').click()
           $All('.woo-pop-item-main')[0].click()
-          if ($('.woo-dialog-ctrl')) {
+          if ($('.woo-dialog-ctrl'))
             $$('.woo-dialog-ctrl', '.woo-button-main').click()
-          }
+
           i > 5 && window.location.reload()
         }
       }
 
-      if (url.indexOf('/profile') !== -1) {
+      if (url.includes('/profile')) {
         // 旧
         if ($('a[action-type="fl_menu"]')) {
           $('a[action-type="fl_menu"]').click()
@@ -38,7 +38,7 @@ function del() {
           $('a[title="取消快转"]').click()
         }
       }
-      if (url.indexOf('//weibo.com/fav') !== -1) {
+      if (url.includes('//weibo.com/fav')) {
         // 旧，github网友提供 https://github.com/Syukkic
         if ($('a[action-type="fl_favorite"]')) {
           $('a[action-type="fl_favorite"]').click()
@@ -46,26 +46,28 @@ function del() {
         }
       }
 
-        // 新
-      if (url.indexOf('//weibo.com/u/') !== -1) {
-        if( $('.vue-recycle-scroller__item-view .deletedToolbar_toolbarFull_1dOfW span')){
+      // 新
+      if (url.includes('//weibo.com/u/')) {
+        if ($('.vue-recycle-scroller__item-view .deletedToolbar_toolbarFull_1dOfW span')) {
           $('.deletedToolbar_toolbarFull_1dOfW span').click()
           $('.vue-recycle-scroller__item-view .deletedToolbar_toolbarFull_1dOfW').remove()
-        } else {
+        }
+        else {
           if ($('i[title="更多"]') || $('i[title="负反馈"]')) {
-            if ($('i[title="更多"]')) {
+            if ($('i[title="更多"]'))
               $('i[title="更多"]').click()
-            }
-            if ($('i[title="负反馈"]')) {
+
+            if ($('i[title="负反馈"]'))
               $('i[title="负反馈"]').click()
-            }
+
             const item = $All('.woo-pop-item-main')
             if (item.length) {
               if (item.length > 3) {
-                item.forEach(item => item.innerText === '删除' && item.click())
+                item.forEach(item => item.textContent === '删除' && item.click())
                 count.value = 0
-              } else {
-                item.forEach(item => item.innerText === '取消快转' && item.click())
+              }
+              else {
+                item.forEach(item => item.textContent === '取消快转' && item.click())
                 setTimeout(() => {
                   count.value = 1
                 }, 1000)
@@ -73,9 +75,9 @@ function del() {
             }
 
             $('.woo-dialog-ctrl') && $$('.woo-dialog-ctrl', '.woo-button-main').click()
-            if ($('.deletedToolbar_toolbarFull_1dOfW')) {
+            if ($('.deletedToolbar_toolbarFull_1dOfW'))
               $('.deletedToolbar_toolbarFull_1dOfW').click()
-            }
+
             if (count.value) {
               count.value = 0
               setTimeout(() => {
@@ -90,14 +92,14 @@ function del() {
   }
 }
 
-const onStart = () => {
+function onStart() {
   console.log('开始')
   localStorage.delWeibo = 'start'
   start.value = 1
   del()
 }
 
-const onEnd = () => {
+function onEnd() {
   console.log('结束')
   localStorage.delWeibo = 'end'
   start.value = 0
@@ -113,8 +115,12 @@ watchEffect(() => {
 </script>
 
 <template>
-  <button class="del-weibo" :class="{'del-weibo-end': start}" v-if="start" @click="onEnd">结束</button>
-  <button class="del-weibo" v-else @click="onStart">开始删除</button>
+  <button v-if="start" class="del-weibo" :class="{ 'del-weibo-end': start }" @click="onEnd">
+    结束
+  </button>
+  <button v-else class="del-weibo" @click="onStart">
+    开始删除
+  </button>
 </template>
 
 <style scoped>

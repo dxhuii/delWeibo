@@ -37,6 +37,5 @@
     "json",
     "jsonc",
     "yaml"
-  ],
-  "unocss.root": ["apps/web", "apps/newtab"]
+  ]
 }

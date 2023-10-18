@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         批量删除新浪微博博文
 // @namespace    https://github.com/dxhuii/delWeibo
-// @version      1.1.4
+// @version      1.1.5
 // @author       plain
 // @description  批量删除新浪微博
 // @license      MIT
@@ -14,7 +14,7 @@
 // @grant        GM_addStyle
 // ==/UserScript==
 
-(e=>{if(typeof GM_addStyle=="function"){GM_addStyle(e);return}const o=document.createElement("style");o.textContent=e,document.head.append(o)})(" .del-weibo[data-v-1534c272]{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:9999999;background-color:#ff8200;color:#fff;padding:6px 16px;border:none;border-radius:100px 0 0 100px;cursor:pointer}.del-weibo-end[data-v-1534c272]{background-color:#ff84007a} ");
+(d=>{if(typeof GM_addStyle=="function"){GM_addStyle(d);return}const e=document.createElement("style");e.textContent=d,document.head.append(e)})(" .del-weibo[data-v-ddac03c3]{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:9999999;background-color:#ff8200;color:#fff;padding:6px 16px;border:none;border-radius:100px 0 0 100px;cursor:pointer}.del-weibo-end[data-v-ddac03c3]{background-color:#ff84007a} ");
 
 (function (vue) {
   'use strict';
@@ -36,18 +36,17 @@
       function del() {
         const url = window.location.href;
         for (let i = 0; i < 1e3; i++) {
-          setTimeout(function() {
-            if (url.indexOf("//weibo.com/u/page/fav/") !== -1) {
+          setTimeout(() => {
+            if (url.includes("//weibo.com/u/page/fav/")) {
               if ($('i[title="更多"]')) {
                 $('i[title="更多"]').click();
                 $All(".woo-pop-item-main")[0].click();
-                if ($(".woo-dialog-ctrl")) {
+                if ($(".woo-dialog-ctrl"))
                   $$(".woo-dialog-ctrl", ".woo-button-main").click();
-                }
                 i > 5 && window.location.reload();
               }
             }
-            if (url.indexOf("/profile") !== -1) {
+            if (url.includes("/profile")) {
               if ($('a[action-type="fl_menu"]')) {
                 $('a[action-type="fl_menu"]').click();
                 $('a[title="删除此条微博"]').click();
@@ -55,40 +54,37 @@
                 $('a[title="取消快转"]').click();
               }
             }
-            if (url.indexOf("//weibo.com/fav") !== -1) {
+            if (url.includes("//weibo.com/fav")) {
               if ($('a[action-type="fl_favorite"]')) {
                 $('a[action-type="fl_favorite"]').click();
                 $('a[action-type="ok"]').click();
               }
             }
-            if (url.indexOf("//weibo.com/u/") !== -1) {
+            if (url.includes("//weibo.com/u/")) {
               if ($(".vue-recycle-scroller__item-view .deletedToolbar_toolbarFull_1dOfW span")) {
                 $(".deletedToolbar_toolbarFull_1dOfW span").click();
                 $(".vue-recycle-scroller__item-view .deletedToolbar_toolbarFull_1dOfW").remove();
               } else {
                 if ($('i[title="更多"]') || $('i[title="负反馈"]')) {
-                  if ($('i[title="更多"]')) {
+                  if ($('i[title="更多"]'))
                     $('i[title="更多"]').click();
-                  }
-                  if ($('i[title="负反馈"]')) {
+                  if ($('i[title="负反馈"]'))
                     $('i[title="负反馈"]').click();
-                  }
                   const item = $All(".woo-pop-item-main");
                   if (item.length) {
                     if (item.length > 3) {
-                      item.forEach((item2) => item2.innerText === "删除" && item2.click());
+                      item.forEach((item2) => item2.textContent === "删除" && item2.click());
                       count.value = 0;
                     } else {
-                      item.forEach((item2) => item2.innerText === "取消快转" && item2.click());
+                      item.forEach((item2) => item2.textContent === "取消快转" && item2.click());
                       setTimeout(() => {
                         count.value = 1;
                       }, 1e3);
                     }
                   }
                   $(".woo-dialog-ctrl") && $$(".woo-dialog-ctrl", ".woo-button-main").click();
-                  if ($(".deletedToolbar_toolbarFull_1dOfW")) {
+                  if ($(".deletedToolbar_toolbarFull_1dOfW"))
                     $(".deletedToolbar_toolbarFull_1dOfW").click();
-                  }
                   if (count.value) {
                     count.value = 0;
                     setTimeout(() => {
@@ -102,18 +98,18 @@
           }, 1e3 * i);
         }
       }
-      const onStart = () => {
+      function onStart() {
         console.log("开始");
         localStorage.delWeibo = "start";
         start.value = 1;
         del();
-      };
-      const onEnd = () => {
+      }
+      function onEnd() {
         console.log("结束");
         localStorage.delWeibo = "end";
         start.value = 0;
         window.location.reload();
-      };
+      }
       vue.watchEffect(() => {
         if (localStorage.delWeibo === "start") {
           del();
@@ -125,11 +121,11 @@
           key: 0,
           class: vue.normalizeClass(["del-weibo", { "del-weibo-end": start.value }]),
           onClick: onEnd
-        }, "结束", 2)) : (vue.openBlock(), vue.createElementBlock("button", {
+        }, " 结束 ", 2)) : (vue.openBlock(), vue.createElementBlock("button", {
           key: 1,
           class: "del-weibo",
           onClick: onStart
-        }, "开始删除"));
+        }, " 开始删除 "));
       };
     }
   });
@@ -140,7 +136,7 @@
     }
     return target;
   };
-  const DelWeibo = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-1534c272"]]);
+  const DelWeibo = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-ddac03c3"]]);
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
     __name: "App",
     setup(__props) {

@@ -26,4 +26,4 @@
 
 ## 更新
 
--  [CHANGELOG](https://github.com/dxhuii/delWeibo/blob/main/CHANGELOG.md)
+-  [CHANGELOG](https://github.com/dxhuii/delWeibo/blob/master/CHANGELOG.md)

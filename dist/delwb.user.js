@@ -10,7 +10,7 @@
 // @match        *://weibo.com/u/*
 // @match        *://weibo.com/fav*
 // @match        *://weibo.com/u/page/fav/*
-// @require      https://cdn.jsdelivr.net/npm/vue@3.3.7/dist/vue.global.prod.js
+// @require      https://cdn.jsdelivr.net/npm/vue@3.4.23/dist/vue.global.prod.js
 // @grant        GM_addStyle
 // ==/UserScript==
 

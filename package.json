@@ -12,16 +12,16 @@
     "release": "bumpp"
   },
   "dependencies": {
-    "vue": "^3.4.15"
+    "vue": "^3.4.23"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.6.3",
-    "@dxhuii/eslint-config": "^2.0.0",
-    "@vitejs/plugin-vue": "^5.0.3",
-    "bumpp": "^9.3.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "vite-plugin-monkey": "^3.5.1",
-    "vue-tsc": "^1.8.27"
+    "@antfu/eslint-config": "2.15.0",
+    "@dxhuii/eslint-config": "^2.1.1",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "bumpp": "^9.4.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.9",
+    "vite-plugin-monkey": "^3.5.2",
+    "vue-tsc": "^2.0.13"
   }
 }

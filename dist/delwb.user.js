@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         批量删除新浪微博博文
 // @namespace    https://github.com/dxhuii/delWeibo
-// @version      1.1.5
+// @version      1.1.6
 // @author       plain
 // @description  批量删除新浪微博
 // @license      MIT
@@ -10,7 +10,7 @@
 // @match        *://weibo.com/u/*
 // @match        *://weibo.com/fav*
 // @match        *://weibo.com/u/page/fav/*
-// @require      https://cdn.jsdelivr.net/npm/vue@3.4.23/dist/vue.global.prod.js
+// @require      https://cdn.jsdelivr.net/npm/vue@3.5.12/dist/vue.global.prod.js
 // @grant        GM_addStyle
 // ==/UserScript==
 

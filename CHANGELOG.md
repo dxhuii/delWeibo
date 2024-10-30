@@ -1,5 +1,8 @@
 ## 更新
 
+## v1.1.6
+- 升级依赖
+
 ## v1.15 及之后版本
 - [releases](https://github.com/dxhuii/delWeibo/releases)
 
